@@ -21,9 +21,8 @@
     </main>
     
     <footer>
-    	<b:section class='footer' id='footer' maxwidgets='1' showaddelement='yes'>
-		</b:section>
-	</footer>
+      <b:section class='foot' id='footer1' name='Footer' showaddelement='yes'/>
+    </footer>
     
   </body>
  </html>
