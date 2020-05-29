@@ -2,120 +2,121 @@
 <!DOCTYPE html>
 <html xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
   <head>
-    <title><data:blog.pagetitle/></title>
-    <b:skin><![CDATA[
-	]]></b:skin>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <title><data:view.title.escaped/></title>
+    <b:skin><![CDATA[]]></b:skin>
   </head>
 
   <body>
     
 	<header>
-    <b:section class='header-sec' id='header-sec' maxwidgets='1' showaddelement='no'>
-      <b:widget id='Header1' locked='true' title='Mdklone (Cabeçalho)' type='Header' version='1'>
-        <b:widget-settings>
-          <b:widget-setting name='displayUrl'/>
-          <b:widget-setting name='displayHeight'>0</b:widget-setting>
-          <b:widget-setting name='sectionWidth'>-1</b:widget-setting>
-          <b:widget-setting name='useImage'>false</b:widget-setting>
-          <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-          <b:widget-setting name='imagePlacement'>BEHIND</b:widget-setting>
-          <b:widget-setting name='displayWidth'>0</b:widget-setting>
-        </b:widget-settings>
+        <b:section class='header' id='header' maxwidgets='1' showaddelement='no'>
+          <b:widget id='Header1' locked='true' title='Mdklone (Cabeçalho)' type='Header'>
+            <b:widget-settings>
+              <b:widget-setting name='displayUrl'/>
+              <b:widget-setting name='displayHeight'>0</b:widget-setting>
+              <b:widget-setting name='sectionWidth'>-1</b:widget-setting>
+              <b:widget-setting name='useImage'>false</b:widget-setting>
+              <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+              <b:widget-setting name='imagePlacement'>BEHIND</b:widget-setting>
+              <b:widget-setting name='displayWidth'>0</b:widget-setting>
+            </b:widget-settings>
+            <b:includable id='main'>
 
-        <b:includable id='main'>
-          <b:if cond='data:useImage'>
-            <b:if cond='data:imagePlacement == &quot;BEHIND&quot;'>
-              <!--
-              Show image as background to text. You can't really calculate the width
-              reliably in JS because margins are not taken into account by any of
-              clientWidth, offsetWidth or scrollWidth, so we don't force a minimum
-              width if the user is using shrink to fit.
-              This results in a margin-width's worth of pixels being cropped. If the
-              user is not using shrink to fit then we expand the header.
-              -->
-              <b:if cond='data:mobile'>
-                <div id='header-inner'>
-                  <div class='titlewrapper' style='background: transparent'>
-                    <h1 class='title' style='background: transparent; border-width: 0px'>
-                      <b:include name='title'/>
-                    </h1>
-                  </div>
-                  <b:include name='description'/>
-                </div>
-              <b:else/>
-                <div expr:style='&quot;background-image: url(\&quot;&quot; + data:sourceUrl + &quot;\&quot;); &quot;                      + &quot;background-position: &quot;                      + data:backgroundPositionStyleStr + &quot;; &quot;                      + data:widthStyleStr                      + &quot;min-height: &quot; + data:height                      + &quot;_height: &quot; + data:height                      + &quot;background-repeat: no-repeat; &quot;' id='header-inner'>
-                  <div class='titlewrapper' style='background: transparent'>
-                    <h1 class='title' style='background: transparent; border-width: 0px'>
-                      <b:include name='title'/>
-                    </h1>
-                  </div>
-                  <b:include name='description'/>
-                </div>
-              </b:if>
-            <b:else/>
-              <!--Show the image only-->
-              <div id='header-inner'>
-                <a expr:href='data:blog.homepageUrl' style='display: block'>
-                  <img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_headerimg&quot;' expr:src='data:sourceUrl' expr:width='data:width' style='display: block'/>
-                </a>
-                <!--Show the description-->
-                <b:if cond='data:imagePlacement == &quot;BEFORE_DESCRIPTION&quot;'>
-                  <b:include name='description'/>
-                </b:if>
-              </div>
-            </b:if>
-          <b:else/>
-            <!--No header image -->
-            <div id='header-inner'>
-              <div class='titlewrapper'>
-                <h1 class='title'>
-                  <b:include name='title'/>
-                </h1>
-              </div>
-              <b:include name='description'/>
-            </div>
-          </b:if>
-        </b:includable>
-        <b:includable id='description'>
-          <div class='descriptionwrapper'>
-            <p class='description'><span><data:description/></span></p>
+  <b:if cond='data:useImage'>
+    <b:if cond='data:imagePlacement == &quot;BEHIND&quot;'>
+      <!--
+      Show image as background to text. You can't really calculate the width
+      reliably in JS because margins are not taken into account by any of
+      clientWidth, offsetWidth or scrollWidth, so we don't force a minimum
+      width if the user is using shrink to fit.
+      This results in a margin-width's worth of pixels being cropped. If the
+      user is not using shrink to fit then we expand the header.
+      -->
+      <b:if cond='data:mobile'>
+        <div id='header-inner'>
+          <div class='titlewrapper' style='background: transparent'>
+            <h1 class='title' style='background: transparent; border-width: 0px'>
+              <b:include name='title'/>
+            </h1>
           </div>
-        </b:includable>
-        <b:includable id='title'>
-          <b:tag cond='data:blog.url != data:blog.homepageUrl' expr:href='data:blog.homepageUrl' name='a'>
-            <data:title/>
-          </b:tag>
-        </b:includable>
-      </b:widget>
-    </b:section>
+          <b:include name='description'/>
+        </div>
+      <b:else/>
+        <div expr:style='&quot;background-image: url(\&quot;&quot; + data:sourceUrl + &quot;\&quot;); &quot;                      + &quot;background-position: &quot;                      + data:backgroundPositionStyleStr + &quot;; &quot;                      + data:widthStyleStr                      + &quot;min-height: &quot; + data:height                      + &quot;_height: &quot; + data:height                      + &quot;background-repeat: no-repeat; &quot;' id='header-inner'>
+          <div class='titlewrapper' style='background: transparent'>
+            <h1 class='title' style='background: transparent; border-width: 0px'>
+              <b:include name='title'/>
+            </h1>
+          </div>
+          <b:include name='description'/>
+        </div>
+      </b:if>
+    <b:else/>
+      <!--Show the image only-->
+      <div id='header-inner'>
+        <a expr:href='data:blog.homepageUrl' style='display: block'>
+          <img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_headerimg&quot;' expr:src='data:sourceUrl' expr:width='data:width' style='display: block'/>
+        </a>
+        <!--Show the description-->
+        <b:if cond='data:imagePlacement == &quot;BEFORE_DESCRIPTION&quot;'>
+          <b:include name='description'/>
+        </b:if>
+      </div>
+    </b:if>
+  <b:else/>
+    <!--No header image -->
+    <div id='header-inner'>
+      <div class='titlewrapper'>
+        <h1 class='title'>
+          <b:include name='title'/>
+        </h1>
+      </div>
+      <b:include name='description'/>
+    </div>
+  </b:if>
+</b:includable>
+            <b:includable id='description'>
+  <div class='descriptionwrapper'>
+    <p class='description'><span><data:description/></span></p>
+  </div>
+</b:includable>
+            <b:includable id='title'>
+  <b:tag cond='data:blog.url != data:blog.homepageUrl' expr:href='data:blog.homepageUrl' name='a'>
+    <data:title/>
+  </b:tag>
+</b:includable>
+          </b:widget>
+        </b:section>
 	</header>
     
     <main>
-          <b:section class='main-sec' id='main-sec' preferred='yes' showaddelement='no'>
-            <b:widget id='Blog1' locked='true' title='Postagens no blog' type='Blog'>
-              <b:widget-settings>
-                <b:widget-setting name='showDateHeader'>true</b:widget-setting>
-                <b:widget-setting name='style.textcolor'>#000000</b:widget-setting>
-                <b:widget-setting name='showShareButtons'>false</b:widget-setting>
-                <b:widget-setting name='showCommentLink'>true</b:widget-setting>
-                <b:widget-setting name='style.urlcolor'>#008000</b:widget-setting>
-                <b:widget-setting name='showAuthor'>true</b:widget-setting>
-                <b:widget-setting name='disableGooglePlusShare'>true</b:widget-setting>
-                <b:widget-setting name='style.linkcolor'>#0000ff</b:widget-setting>
-                <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
-                <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
-                <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
-                <b:widget-setting name='style.layout'>1x1</b:widget-setting>
-                <b:widget-setting name='showLabels'>true</b:widget-setting>
-                <b:widget-setting name='showLocation'>true</b:widget-setting>
-                <b:widget-setting name='showTimestamp'>true</b:widget-setting>
-                <b:widget-setting name='postsPerAd'>1</b:widget-setting>
-                <b:widget-setting name='showBacklinks'>false</b:widget-setting>
-                <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
-                <b:widget-setting name='showInlineAds'>false</b:widget-setting>
-                <b:widget-setting name='showReactions'>false</b:widget-setting>
-              </b:widget-settings>
-              <b:includable id='main' var='top'>
+    	<b:section class='main' id='main' preferred='yes' showaddelement='no'>
+<b:widget id='Blog1' locked='true' title='Postagens no blog' type='Blog'>
+  <b:widget-settings>
+    <b:widget-setting name='showDateHeader'>true</b:widget-setting>
+    <b:widget-setting name='style.textcolor'>#000000</b:widget-setting>
+    <b:widget-setting name='showShareButtons'>true</b:widget-setting>
+    <b:widget-setting name='authorLabel'>By</b:widget-setting>
+    <b:widget-setting name='showCommentLink'>true</b:widget-setting>
+    <b:widget-setting name='style.urlcolor'>#008000</b:widget-setting>
+    <b:widget-setting name='showAuthor'>false</b:widget-setting>
+    <b:widget-setting name='disableGooglePlusShare'>true</b:widget-setting>
+    <b:widget-setting name='style.linkcolor'>#0000ff</b:widget-setting>
+    <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
+    <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
+    <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
+    <b:widget-setting name='style.layout'>1x1</b:widget-setting>
+    <b:widget-setting name='showLabels'>true</b:widget-setting>
+    <b:widget-setting name='showLocation'>true</b:widget-setting>
+    <b:widget-setting name='showTimestamp'>true</b:widget-setting>
+    <b:widget-setting name='postsPerAd'>1</b:widget-setting>
+    <b:widget-setting name='showBacklinks'>false</b:widget-setting>
+    <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
+    <b:widget-setting name='showInlineAds'>false</b:widget-setting>
+    <b:widget-setting name='showReactions'>false</b:widget-setting>
+  </b:widget-settings>
+  <b:includable id='main' var='top'>
   <b:if cond='!data:mobile'>
     <!-- posts -->
     <div class='blog-posts hfeed'>
@@ -164,14 +165,14 @@
 
   <b:include cond='data:top.showPlusOne' name='googlePlusBootstrap'/>
 </b:includable>
-              <b:includable id='backlinkDeleteIcon' var='backlink'>
+  <b:includable id='backlinkDeleteIcon' var='backlink'>
   <span expr:class='&quot;item-control &quot; + data:backlink.adminClass'>
     <a expr:href='data:backlink.deleteUrl' expr:title='data:top.deleteBacklinkMsg'>
       <img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
     </a>
   </span>
 </b:includable>
-              <b:includable id='backlinks' var='post'>
+  <b:includable id='backlinks' var='post'>
   <a name='links'/><h4><data:post.backlinksLabel/></h4>
   <b:if cond='data:post.numBacklinks != 0'>
     <dl class='comments-block' id='comments-block'>
@@ -197,7 +198,7 @@
     <a class='comment-link' expr:href='data:post.createLinkUrl' expr:id='data:widget.instanceId + &quot;_backlinks-create-link&quot;' target='_blank'><data:post.createLinkLabel/></a>
   </p>
 </b:includable>
-              <b:includable id='comment-form' var='post'>
+  <b:includable id='comment-form' var='post'>
   <div class='comment-form'>
     <a name='comment-form'/>
     <b:if cond='data:mobile'>
@@ -220,7 +221,7 @@
     </script>
   </div>
 </b:includable>
-              <b:includable id='commentDeleteIcon' var='comment'>
+  <b:includable id='commentDeleteIcon' var='comment'>
   <span expr:class='&quot;item-control &quot; + data:comment.adminClass'>
     <b:if cond='data:showCmtPopup'>
       <div class='goog-toggle-button'>
@@ -233,19 +234,19 @@
     </b:if>
   </span>
 </b:includable>
-              <b:includable id='comment_count_picker' var='post'>
+  <b:includable id='comment_count_picker' var='post'>
   <a class='comment-link' expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'>
     <data:post.commentLabelFull/>:
   </a>
 </b:includable>
-              <b:includable id='comment_picker' var='post'>
+  <b:includable id='comment_picker' var='post'>
   <b:if cond='data:post.showThreadedComments'>
     <b:include data='post' name='threaded_comments'/>
   <b:else/>
     <b:include data='post' name='comments'/>
   </b:if>
 </b:includable>
-              <b:includable id='comments' var='post'>
+  <b:includable id='comments' var='post'>
   <div class='comments' id='comments'>
     <a name='comments'/>
     <b:if cond='data:post.allowComments'>
@@ -356,7 +357,7 @@
     </div>
   </div>
 </b:includable>
-              <b:includable id='feedLinks'>
+  <b:includable id='feedLinks'>
   <b:if cond='data:blog.pageType != &quot;item&quot;'> <!-- Blog feed links -->
     <b:if cond='data:feedLinks'>
       <div class='blog-feeds'>
@@ -372,7 +373,7 @@
     </div>
   </b:if>
 </b:includable>
-              <b:includable id='feedLinksBody' var='links'>
+  <b:includable id='feedLinksBody' var='links'>
   <div class='feed-links'>
   <data:feedLinksMsg/>
   <b:loop values='data:links' var='f'>
@@ -380,10 +381,10 @@
   </b:loop>
   </div>
 </b:includable>
-              <b:includable id='iframe_comments' var='post'>
+  <b:includable id='iframe_comments' var='post'>
   <!-- G+ comments, no longer available. The includable is retained for backwards-compatibility. -->
 </b:includable>
-              <b:includable id='mobile-index-post' var='post'>
+  <b:includable id='mobile-index-post' var='post'>
   <div class='mobile-date-outer date-outer'>
     <b:if cond='data:post.dateHeader'>
       <div class='date-header'>
@@ -422,7 +423,7 @@
     </div>
   </div>
 </b:includable>
-              <b:includable id='mobile-main' var='top'>
+  <b:includable id='mobile-main' var='top'>
     <!-- posts -->
     <div class='blog-posts hfeed'>
 
@@ -441,7 +442,7 @@
 
    <b:include name='mobile-nextprev'/>
 </b:includable>
-              <b:includable id='mobile-nextprev'>
+  <b:includable id='mobile-nextprev'>
   <div class='blog-pager' id='blog-pager'>
     <b:if cond='data:newerPageUrl'>
       <div class='mobile-link-button' id='blog-pager-newer-link'>
@@ -466,7 +467,7 @@
   </div>
   <div class='clear'/>
 </b:includable>
-              <b:includable id='mobile-post' var='post'>
+  <b:includable id='mobile-post' var='post'>
   <div class='date-outer'>
     <b:if cond='data:post.dateHeader'>
       <h2 class='date-header'><span><data:post.dateHeader/></span></h2>
@@ -556,7 +557,7 @@
     </div>
   </div>
 </b:includable>
-              <b:includable id='nextprev'>
+  <b:includable id='nextprev'>
   <div class='blog-pager' id='blog-pager'>
     <b:if cond='data:newerPageUrl'>
       <span id='blog-pager-newer-link'>
@@ -581,7 +582,7 @@
   </div>
   <div class='clear'/>
 </b:includable>
-              <b:includable id='post' var='post'>
+  <b:includable id='post' var='post'>
   <div class='post hentry uncustomized-post-template' itemprop='blogPost' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'>
     <b:if cond='data:post.firstImageUrl'>
       <meta expr:content='data:post.firstImageUrl' itemprop='image_url'/>
@@ -724,7 +725,7 @@
     </div>
   </div>
 </b:includable>
-              <b:includable id='postQuickEdit' var='post'>
+  <b:includable id='postQuickEdit' var='post'>
   <b:if cond='data:post.editUrl'>
     <span expr:class='&quot;item-control &quot; + data:post.adminClass'>
       <a expr:href='data:post.editUrl' expr:title='data:top.editPostMsg'>
@@ -733,10 +734,10 @@
     </span>
   </b:if>
 </b:includable>
-              <b:includable id='shareButtons' var='post'>
+  <b:includable id='shareButtons' var='post'>
   <b:if cond='data:top.showEmailButton'><a class='goog-inline-block share-button sb-email' expr:href='data:post.sharePostUrl + &quot;&amp;target=email&quot;' expr:title='data:top.emailThisMsg' target='_blank'><span class='share-button-link-text'><data:top.emailThisMsg/></span></a></b:if><b:if cond='data:top.showBlogThisButton'><a class='goog-inline-block share-button sb-blog' expr:href='data:post.sharePostUrl + &quot;&amp;target=blog&quot;' expr:onclick='&quot;window.open(this.href, \&quot;_blank\&quot;, \&quot;height=270,width=475\&quot;); return false;&quot;' expr:title='data:top.blogThisMsg' target='_blank'><span class='share-button-link-text'><data:top.blogThisMsg/></span></a></b:if><b:if cond='data:top.showTwitterButton'><a class='goog-inline-block share-button sb-twitter' expr:href='data:post.sharePostUrl + &quot;&amp;target=twitter&quot;' expr:title='data:top.shareToTwitterMsg' target='_blank'><span class='share-button-link-text'><data:top.shareToTwitterMsg/></span></a></b:if><b:if cond='data:top.showFacebookButton'><a class='goog-inline-block share-button sb-facebook' expr:href='data:post.sharePostUrl + &quot;&amp;target=facebook&quot;' expr:onclick='&quot;window.open(this.href, \&quot;_blank\&quot;, \&quot;height=430,width=640\&quot;); return false;&quot;' expr:title='data:top.shareToFacebookMsg' target='_blank'><span class='share-button-link-text'><data:top.shareToFacebookMsg/></span></a></b:if><b:if cond='data:top.showPinterestButton'><a class='goog-inline-block share-button sb-pinterest' expr:href='data:post.sharePostUrl + &quot;&amp;target=pinterest&quot;' expr:title='data:top.shareToPinterestMsg' target='_blank'><span class='share-button-link-text'><data:top.shareToPinterestMsg/></span></a></b:if><b:if cond='data:top.showPlusOne'><div class='goog-inline-block google-plus-share-container'><data:post.googlePlusShareTag/></div></b:if>
 </b:includable>
-              <b:includable id='status-message'>
+  <b:includable id='status-message'>
   <b:if cond='data:navMessage'>
   <div class='status-msg-wrap'>
     <div class='status-msg-body'>
@@ -751,7 +752,7 @@
   <div style='clear: both;'/>
   </b:if>
 </b:includable>
-              <b:includable id='threaded-comment-form' var='post'>
+  <b:includable id='threaded-comment-form' var='post'>
   <div class='comment-form'>
     <a name='comment-form'/>
     <b:if cond='data:mobile'>
@@ -771,7 +772,7 @@
     </script>
   </div>
 </b:includable>
-              <b:includable id='threaded_comment_js' var='post'>
+  <b:includable id='threaded_comment_js' var='post'>
   <script async='async' expr:src='data:post.commentSrc' type='text/javascript'/>
 
   <script type='text/javascript'>
@@ -957,7 +958,7 @@
 // ]]>
   </script>
 </b:includable>
-              <b:includable id='threaded_comments' var='post'>
+  <b:includable id='threaded_comments' var='post'>
   <div class='comments' id='comments'>
     <a name='comments'/>
     <h4><data:post.commentLabelFull/>:</h4>
@@ -991,13 +992,13 @@
     </div>
   </div>
 </b:includable>
-            </b:widget>
-          </b:section>
+</b:widget>
+</b:section>
     </main>
     
     <footer>
-		<b:section class='footer-sec' id='footer-sec' maxwidgets='1' showaddelement='no'/>
-	</footer>
+      <b:section class='foot' id='footer1' name='Footer' showaddelement='yes'/>
+    </footer>
     
   </body>
  </html>
